@@ -31,7 +31,9 @@ app.get('/games', async (request, response) => {
 app.post('/games/:id/ads', async (request, response) => {
   const gameId = request.params.id;
   const body = request.body;
-  //Criar Validações aqui
+  
+  //Criar validações aqui
+  
   const ad = await prisma.ad.create({
     data: {
       gameId,
@@ -44,7 +46,7 @@ app.post('/games/:id/ads', async (request, response) => {
       useVoiceChannel: body.useVoiceChannel
     }
   })
-
+  
   return response.status(201).json(ad);
 })
 
@@ -94,3 +96,5 @@ app.get('/ads/:id/discord', async (request, response) => {
 })
 
 app.listen(3333)
+
+
